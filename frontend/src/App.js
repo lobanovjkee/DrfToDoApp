@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import UsersList from "./components/User";
+import UsersList from "./components/Users";
 import Menu from "./components/Menu";
 import Footer from "./components/Footer";
 import 'bootstrap/dist/css/bootstrap.min.css'
