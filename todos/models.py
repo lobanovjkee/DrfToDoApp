@@ -23,3 +23,7 @@ class TODO(models.Model):
     is_active = models.BooleanField(default=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
+
+    def delete(self, using=None, keep_parents=False):
+        self.is_active = False
+        self.save()

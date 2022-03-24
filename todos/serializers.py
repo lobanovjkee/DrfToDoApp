@@ -1,10 +1,11 @@
-from rest_framework.serializers import HyperlinkedModelSerializer, StringRelatedField
+from rest_framework.serializers import HyperlinkedModelSerializer, SlugRelatedField
 
 from todos.models import Project, TODO
+from users.models import User
 
 
 class ProjectModelSerializer(HyperlinkedModelSerializer):
-    users = StringRelatedField(many=True)
+    users = SlugRelatedField(many=True, slug_field='username', queryset=User.objects.all())
 
     class Meta:
         model = Project
@@ -12,8 +13,8 @@ class ProjectModelSerializer(HyperlinkedModelSerializer):
 
 
 class TODOModelSerializer(HyperlinkedModelSerializer):
-    user = StringRelatedField()
-    project = StringRelatedField()
+    user = SlugRelatedField(slug_field='username', queryset=User.objects.all())
+    project = SlugRelatedField(slug_field='project_name', queryset=Project.objects.all())
 
     class Meta:
         model = TODO
