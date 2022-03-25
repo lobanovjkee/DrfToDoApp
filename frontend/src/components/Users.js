@@ -5,7 +5,7 @@ import Table from "react-bootstrap/Table"
 const UserItem = ({user}) => {
     return (
         <tr>
-            <td><a href={user.url}>Ссылка на пользователя</a></td>
+            <td><a href={user.url} target='_blank'>Ссылка на пользователя</a></td>
             <td>{user.username}</td>
             <td>{user.first_name}</td>
             <td>{user.last_name}</td>
@@ -28,7 +28,7 @@ const UsersList = ({users}) => {
                 </tr>
                 </thead>
                 <tbody>
-                {users.map((user) => <UserItem user={user}/>)}
+                {users.map((user) => <UserItem key={user.url} user={user}/>)}
                 </tbody>
             </Table>
         </Container>
